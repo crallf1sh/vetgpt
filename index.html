@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VetGPT</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+
+    <div class="app">
+      <header class="hero">
+        <div class="hero-top">
+          <img src="assets/VetGPT-dkbg.png" alt="VetGPT logo" class="hero-logo" />
+          <div class="hero-badge">AI-Powered Pet Health Guidance</div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Understand symptoms faster. Know when to monitor and when to call the vet.</h1>
+          <p>
+            VetGPT helps pet owners interpret common symptoms in dogs and cats using a simple intake form and clear next-step guidance.
+          </p>
+          <div class="hero-meta">
+            <span class="subnote">Currently supports dogs and cats</span>
+            <span class="subnote subnote-alt">Educational prototype</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="disclaimer">
+        This prototype is for educational purposes only and is not a substitute for veterinary care.
+        If your pet is struggling to breathe, is unresponsive, or appears to be in distress, contact an emergency veterinarian immediately.
+      </div>
+
+      <main class="grid">
+        <section class="card form-card">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Intake</span>
+              <h2>Tell us what’s going on</h2>
+            </div>
+            <p class="section-copy">Enter the basics and describe your pet’s symptoms so VetGPT can provide a cautious review.</p>
+          </div>
+
+          <div class="field">
+            <label for="petName">Pet Name</label>
+            <input type="text" id="petName" placeholder="Bella" />
+          </div>
+
+          <div class="field">
+            <label for="petType">Pet Type</label>
+            <select id="petType">
+              <option value="">Select one</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="age">Age</label>
+              <input type="text" id="age" placeholder="3 years" />
+            </div>
+
+            <div class="field">
+              <label for="sex">Sex</label>
+              <select id="sex">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Symptoms</label>
+            <p class="field-helper">Select any symptoms that apply. If none fit, use Additional Notes below.</p>
+
+            <div class="checkbox-group">
+              <label><input type="checkbox" value="vomiting" /> Vomiting</label>
+              <label><input type="checkbox" value="diarrhea" /> Diarrhea</label>
+              <label><input type="checkbox" value="lethargy" /> Lethargy</label>
+              <label><input type="checkbox" value="not-eating" /> Not eating</label>
+              <label><input type="checkbox" value="coughing" /> Coughing</label>
+              <label><input type="checkbox" value="itching" /> Itching</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="duration">How long has this been happening?</label>
+            <select id="duration">
+              <option value="">Select one</option>
+              <option>Started today</option>
+              <option>1–2 days</option>
+              <option>3–5 days</option>
+              <option>More than a week</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" placeholder="Describe any changes in appetite, behavior, energy, injury, or anything else you’ve noticed."></textarea>
+          </div>
+
+          <button class="btn" id="checkBtn">Check Symptoms</button>
+        </section>
+
+        <section class="card assessment-card">
+          <div class="section-heading section-heading-tight">
+            <div>
+              <span class="eyebrow">Review</span>
+              <h2>VetGPT Assessment</h2>
+            </div>
+            <p class="section-copy">Your assessment will appear here after you submit the symptom form.</p>
+          </div>
+
+          <div class="result-box" id="resultBox">
+            <div class="empty-state">
+              <div class="empty-icon">🐾</div>
+              <h3>Ready when you are</h3>
+              <p class="muted">
+                Fill out the form and click <strong>Check Symptoms</strong> to receive a symptom review and recommended next step.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

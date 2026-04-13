@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VetGPT</title>
+  <link rel="stylesheet" href="css/style-light.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <img src="assets/vetgpt-logo.png" alt="VetGPT logo" />
+      <p>AI-powered pet symptom checker prototype</p>
+      <div class="subnote">Currently supports dogs and cats</div>
+    </div>
+
+    <div class="disclaimer"><center>
+      This prototype is for educational purposes only and is not a substitute for veterinary care.
+      If your pet is struggling or is unresponsive, contact an emergency vet immediately.</center>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Pet Symptom Form</h2>
+
+        <div class="field">
+          <label for="petName">Pet Name</label>
+          <input type="text" id="petName" placeholder="Bella" />
+        </div>
+
+        <div class="field">
+          <label for="petType">Pet Type</label>
+          <select id="petType">
+            <option value="">Select one</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+  <div class="field">
+    <label for="age">Age</label>
+    <input type="text" id="age" placeholder="3 years" />
+  </div>
+
+  <div class="field">
+    <label for="sex">Sex</label>
+    <select id="sex">
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </div>
+</div>
+
+        <div class="field">
+          <label>Symptoms</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" value="vomiting" /> Vomiting</label>
+            <label><input type="checkbox" value="diarrhea" /> Diarrhea</label>
+            <label><input type="checkbox" value="lethargy" /> Lethargy</label>
+            <label><input type="checkbox" value="not-eating" /> Not eating</label>
+            <label><input type="checkbox" value="coughing" /> Coughing</label>
+            <label><input type="checkbox" value="itching" /> Itching</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="duration">How long has this been happening?</label>
+          <select id="duration">
+            <option value="">Select one</option>
+            <option>Started today</option>
+            <option>1–2 days</option>
+            <option>3–5 days</option>
+            <option>More than a week</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" placeholder="Any changes in appetite, behavior, or energy?"></textarea>
+        </div>
+
+        <button class="btn" id="checkBtn">Check Symptoms</button>
+      </div>
+
+      <div class="card">
+        <h2>Assessment</h2>
+        <div class="result-box" id="resultBox">
+          <div class="empty-state">
+            <div class="empty-icon">🐾</div>
+            <p class="muted">Fill out the form and click “Check Symptoms” to see a sample result.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script> /* PROTOTYPE MODE 
+    const checkBtn = document.getElementById("checkBtn");
+    const resultBox = document.getElementById("resultBox");
+
+    checkBtn.addEventListener("click", () => {
+      const petName = document.getElementById("petName").value.trim() || "Your pet";
+      const selectedSymptoms = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value);
+      const duration = document.getElementById("duration").value;
+
+      let urgencyClass = "monitor";
+      let urgencyLabel = "Monitor";
+      let summary = "Mild symptoms reported.";
+      let recommendation = "Monitor symptoms closely and contact your veterinarian if symptoms worsen or continue.";
+
+      if (selectedSymptoms.includes("vomiting") && selectedSymptoms.includes("lethargy")) {
+        summary = "Vomiting with lethargy may suggest a stomach issue, dehydration, or another illness that may need veterinary attention.";
+        recommendation = "Consider contacting your vet within 24 hours, especially if vomiting continues or your pet is not drinking water.";
+      }
+
+      if (selectedSymptoms.includes("not-eating") && selectedSymptoms.includes("lethargy") && duration === "3–5 days") {
+        urgencyClass = "urgent";
+        urgencyLabel = "Urgent Review Recommended";
+        summary = "Loss of appetite combined with lethargy for several days may indicate a more serious issue.";
+        recommendation = "A veterinary visit is recommended as soon as possible.";
+      }
+
+      resultBox.innerHTML = `
+        <div class="tag ${urgencyClass}">${urgencyLabel}</div>
+        <h3>${petName}'s Symptom Review</h3>
+        <p><strong>Possible concern:</strong> ${summary}</p>
+        <p><strong>Recommended next step:</strong> ${recommendation}</p>
+        <p class="muted">This is a prototype response and not a medical diagnosis.</p>
+      `;
+    });
+    */
+  </script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
