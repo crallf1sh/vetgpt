@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-mode">
   <div class="app-shell">
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
@@ -17,8 +17,14 @@
     <div class="app">
       <header class="hero">
         <div class="hero-top">
-          <img src="assets/VetGPT-dkbg.png" alt="VetGPT logo" class="hero-logo" />
-          <div class="hero-badge">AI-Powered Pet Health Guidance</div>
+<img src="assets/VetGPT-dkbg.png" alt="VetGPT logo" class="hero-logo" id="themeLogo" />          <div class="hero-badge">AI-Powered Pet Health Guidance</div>
+
+         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="true">
+  <span class="theme-toggle-track">
+    <span class="theme-toggle-thumb"></span>
+  </span>
+  <span class="theme-toggle-text">Dark</span>
+</button>
         </div>
 
         <div class="hero-copy">
@@ -135,5 +141,29 @@
   </div>
 
   <script src="js/app.js"></script>
+
+<script>
+  const toggle = document.getElementById("themeToggle");
+  const toggleText = toggle.querySelector(".theme-toggle-text");
+  const themeLogo = document.getElementById("themeLogo");
+
+  function applyTheme(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+    toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+    toggleText.textContent = isDark ? "Dark" : "Light";
+    themeLogo.src = isDark
+      ? "assets/VetGPT-dkbg.png"
+      : "assets/VetGPT-ltbg.png";
+    localStorage.setItem("vetgpt-theme", isDark ? "dark" : "light");
+  }
+
+  const savedTheme = localStorage.getItem("vetgpt-theme");
+  applyTheme(savedTheme ? savedTheme === "dark" : true);
+
+  toggle.addEventListener("click", () => {
+    const isDark = !document.body.classList.contains("dark-mode");
+    applyTheme(isDark);
+  });
+</script>
 </body>
 </html>
